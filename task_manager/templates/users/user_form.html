@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% trans "Update User" %}</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h1>{% trans "Update User" %}</h1>
+      <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-warning">{% trans "Update" %}</button>
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% trans "Register" %}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form layout='vertical' %}
+    <button type="submit" class="btn btn-warning">{% trans "Register" %}</button>
+  </form>
+{% endblock %}

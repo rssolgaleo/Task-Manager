@@ -19,21 +19,48 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-white">{% trans "Users" %}</a></li>
+          <li>
+            <a href="{% url 'user_list' %}" class="nav-link px-2 text-white">
+              {% trans "Users" %}
+            </a>
+          </li>
         </ul>
 
-        <div class="text-end">
-          <a href="#" class="btn btn-outline-light me-2">{% trans "Login" %}</a>
-          <a href="#" class="btn btn-warning">{% trans "Sign up" %}</a>
-        </div>
+        {% if user.is_authenticated %}
+          <form method="post" action="{% url 'logout' %}" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light">{% trans "Logout" %}</button>
+          </form>
+        {% else %}
+          <div class="text-end">
+            <a href="{% url 'login' %}" class="btn btn-outline-light me-2">{% trans "Login" %}</a>
+            <a href="{% url 'user_create' %}" class="btn btn-warning">{% trans "Sign up" %}</a>
+          </div>
+        {% endif %}
       </div>
     </div>
   </header>
+
+  <!-- Flash messages block -->
+  <div class="container mt-3">
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == "error" %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% else %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {% endif %}
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
 
   <main class="container">
     {% block content %}
     {% endblock %}
   </main>
-
   </body>
 </html>

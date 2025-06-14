@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% trans "Users" %}</h1>
+  <ul class="list-group">
+    {% for user in users %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ user.username }}
+        <div>
+          <a href="{% url 'user_update' user.pk %}" class="btn btn-outline-dark">
+            {% trans "Edit" %}
+          </a>
+          <a href="{% url 'user_delete' user.pk %}" class="btn btn-warning">
+            {% trans "Delete" %}
+          </a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
