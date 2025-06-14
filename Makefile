@@ -1,5 +1,5 @@
 install:
-	uv sync --system --yes
+	uv sync
 	uv pip install -e .
 
 migrate:
