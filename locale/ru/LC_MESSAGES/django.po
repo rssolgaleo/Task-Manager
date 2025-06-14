@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-14 22:19+0300\n"
+"POT-Creation-Date: 2025-06-15 00:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,18 +20,80 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: task_manager/task_manager_app/views.py:17
+msgid "User created successfully"
+msgstr "Пользователь создан успешно"
+
+#: task_manager/task_manager_app/views.py:37
+msgid "You don't have permission to update this user."
+msgstr "У вас нет разрешения на обновление этого пользователя."
+
+#: task_manager/task_manager_app/views.py:41
+msgid "User updated successfully"
+msgstr "Пользователь успешно обновлен"
+
+#: task_manager/task_manager_app/views.py:53
+msgid "You don't have permission to delete this user."
+msgstr "У вас нет разрешения на удаление этого пользователя."
+
+#: task_manager/task_manager_app/views.py:58
+msgid "User successfully deleted"
+msgstr "Пользователь успешно удален"
+
 #: task_manager/templates/base.html:6 task_manager/templates/base.html:18
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/base.html:22
+#: task_manager/templates/base.html:24
+#: task_manager/templates/users/user_list.html:5
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/base.html:26
+#: task_manager/templates/base.html:31
+msgid "Edit profile"
+msgstr "Редактировать профиль"
+
+#: task_manager/templates/base.html:35
+msgid "Logout"
+msgstr "Выход из системы"
+
+#: task_manager/templates/base.html:39
+#: task_manager/templates/users/login.html:6
+#: task_manager/templates/users/login.html:11
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:27
+#: task_manager/templates/base.html:40
 msgid "Sign up"
 msgstr "Регистрация"
+
+#: task_manager/templates/users/user_confirm_delete.html:7
+msgid "Are you sure you want to delete account?"
+msgstr "Вы уверены, что хотите удалить аккаунт?"
+
+#: task_manager/templates/users/user_confirm_delete.html:10
+#: task_manager/templates/users/user_list.html:15
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/templates/users/user_confirm_delete.html:11
+msgid "Cancel"
+msgstr "Отменить"
+
+#: task_manager/templates/users/user_create.html:6
+#: task_manager/templates/users/user_create.html:11
+msgid "Register"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/user_form.html:9
+#: task_manager/templates/users/user_form.html:15
+msgid "Update User"
+msgstr "Обновление пользователя"
+
+#: task_manager/templates/users/user_form.html:19
+msgid "Update"
+msgstr "Обновить"
+
+#: task_manager/templates/users/user_list.html:12
+msgid "Edit"
+msgstr "Редактировать"
