@@ -1,5 +1,5 @@
 install:
-	uv sync --yes
+	uv sync
 
 migrate:
 	uv run python manage.py migrate
