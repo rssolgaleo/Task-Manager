@@ -24,6 +24,13 @@
               {% trans "Users" %}
             </a>
           </li>
+          {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'status_list' %}" class="nav-link px-2 text-white">
+                {% trans "Statuses" %}
+              </a>
+            </li>
+          {% endif %}
         </ul>
 
         {% if user.is_authenticated %}
