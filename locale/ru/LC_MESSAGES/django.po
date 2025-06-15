@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-15 23:15+0300\n"
+"POT-Creation-Date: 2025-06-15 21:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,33 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: task_manager/task_manager_app/statuses/models.py:5
+#: task_manager/templates/statuses/status_list.html:15
+msgid "Name"
+msgstr ""
+
+#: task_manager/task_manager_app/statuses/views.py:25
+#, fuzzy
+#| msgid "User created successfully"
+msgid "Status created successfully"
+msgstr "Пользователь создан успешно"
+
+#: task_manager/task_manager_app/statuses/views.py:36
+#, fuzzy
+#| msgid "User updated successfully"
+msgid "Status updated successfully"
+msgstr "Пользователь успешно обновлен"
+
+#: task_manager/task_manager_app/statuses/views.py:46
+#, fuzzy
+#| msgid "User created successfully"
+msgid "Status deleted successfully"
+msgstr "Пользователь создан успешно"
+
+#: task_manager/task_manager_app/statuses/views.py:54
+msgid "Cannot delete status because it is in use"
+msgstr ""
 
 #: task_manager/task_manager_app/users/views.py:17
 msgid "User created successfully"
@@ -49,36 +76,87 @@ msgstr "Менеджер задач"
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/base.html:31
+#: task_manager/templates/base.html:30
+#: task_manager/templates/statuses/status_list.html:5
+msgid "Statuses"
+msgstr ""
+
+#: task_manager/templates/base.html:38
 msgid "Edit profile"
 msgstr "Редактировать профиль"
 
-#: task_manager/templates/base.html:35
+#: task_manager/templates/base.html:42
 msgid "Logout"
 msgstr "Выход из системы"
 
-#: task_manager/templates/base.html:39
+#: task_manager/templates/base.html:46
 #: task_manager/templates/users/login.html:6
 #: task_manager/templates/users/login.html:11
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:40
+#: task_manager/templates/base.html:47
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: task_manager/templates/users/user_confirm_delete.html:7
-msgid "Are you sure you want to delete account?"
+#: task_manager/templates/statuses/status_confirm_delete.html:9
+#, fuzzy
+#| msgid "Are you sure you want to delete account?"
+msgid "Are you sure you want to delete this status?"
 msgstr "Вы уверены, что хотите удалить аккаунт?"
 
-#: task_manager/templates/users/user_confirm_delete.html:10
-#: task_manager/templates/users/user_list.html:15
+#: task_manager/templates/statuses/status_confirm_delete.html:16
+#: task_manager/templates/statuses/status_list.html:31
+#: task_manager/templates/users/user_confirm_delete.html:12
+#: task_manager/templates/users/user_list.html:29
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/templates/users/user_confirm_delete.html:11
+#: task_manager/templates/statuses/status_confirm_delete.html:17
+#: task_manager/templates/users/user_confirm_delete.html:13
 msgid "Cancel"
 msgstr "Отменить"
+
+#: task_manager/templates/statuses/status_form.html:8
+msgid "Edit status"
+msgstr "Редактировать статус"
+
+#: task_manager/templates/statuses/status_form.html:10
+#: task_manager/templates/statuses/status_list.html:8
+msgid "Create status"
+msgstr "Создать статус"
+
+#: task_manager/templates/statuses/status_form.html:18
+msgid "Save"
+msgstr "Сохранить"
+
+#: task_manager/templates/statuses/status_list.html:14
+#: task_manager/templates/users/user_list.html:10
+msgid "ID"
+msgstr "ID"
+
+#: task_manager/templates/statuses/status_list.html:16
+#: task_manager/templates/users/user_list.html:13
+msgid "Created at"
+msgstr "Дата создания"
+
+#: task_manager/templates/statuses/status_list.html:17
+#: task_manager/templates/users/user_list.html:14
+msgid "Actions"
+msgstr "Действия"
+
+#: task_manager/templates/statuses/status_list.html:28
+#: task_manager/templates/users/user_list.html:26
+msgid "Edit"
+msgstr "Редактировать"
+
+#: task_manager/templates/users/user_confirm_delete.html:8
+msgid "Are you sure you want to delete account?"
+msgstr "Вы уверены, что хотите удалить аккаунт?"
+
+#: task_manager/templates/users/user_confirm_delete.html:9
+msgid "If you delete the account, it cannot be restored."
+msgstr "Если вы удалите аккаунт, восстановить его будет невозможно."
 
 #: task_manager/templates/users/user_create.html:6
 #: task_manager/templates/users/user_create.html:11
@@ -94,6 +172,10 @@ msgstr "Обновление пользователя"
 msgid "Update"
 msgstr "Обновить"
 
+#: task_manager/templates/users/user_list.html:11
+msgid "Username"
+msgstr "Имя пользователя"
+
 #: task_manager/templates/users/user_list.html:12
-msgid "Edit"
-msgstr "Редактировать"
+msgid "Full name"
+msgstr "Полное имя"

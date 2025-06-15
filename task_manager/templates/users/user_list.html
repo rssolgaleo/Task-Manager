@@ -3,19 +3,34 @@
 
 {% block content %}
   <h1>{% trans "Users" %}</h1>
-  <ul class="list-group">
-    {% for user in users %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ user.username }}
-        <div>
-          <a href="{% url 'user_update' user.pk %}" class="btn btn-outline-dark">
-            {% trans "Edit" %}
-          </a>
-          <a href="{% url 'user_delete' user.pk %}" class="btn btn-warning">
-            {% trans "Delete" %}
-          </a>
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">{% trans "ID" %}</th>
+        <th scope="col" class="text-center">{% trans "Username" %}</th>
+        <th scope="col" class="text-center">{% trans "Full name" %}</th>
+        <th scope="col" class="text-center">{% trans "Created at" %}</th>
+        <th scope="col" class="text-center">{% trans "Actions" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td class="text-center">{{ user.id }}</td>
+          <td class="text-center">{{ user.username }}</td>
+          <td class="text-center">{{ user.get_full_name }}</td>
+          <td class="text-center">{{ user.date_joined|date:"d.m.Y" }}</td>
+          <td class="text-center">
+            <a href="{% url 'user_update' user.pk %}" class="btn btn-outline-dark">
+              {% trans "Edit" %}
+            </a>
+            <a href="{% url 'user_delete' user.pk %}" class="btn btn-warning">
+              {% trans "Delete" %}
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
