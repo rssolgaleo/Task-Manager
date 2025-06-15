@@ -23,7 +23,7 @@ msgstr ""
 #: task_manager/task_manager_app/statuses/models.py:5
 #: task_manager/templates/statuses/status_list.html:15
 msgid "Name"
-msgstr ""
+msgstr "Название"
 
 #: task_manager/task_manager_app/statuses/views.py:25
 #, fuzzy
@@ -45,7 +45,7 @@ msgstr "Пользователь создан успешно"
 
 #: task_manager/task_manager_app/statuses/views.py:54
 msgid "Cannot delete status because it is in use"
-msgstr ""
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: task_manager/task_manager_app/users/views.py:17
 msgid "User created successfully"
@@ -79,7 +79,7 @@ msgstr "Пользователи"
 #: task_manager/templates/base.html:30
 #: task_manager/templates/statuses/status_list.html:5
 msgid "Statuses"
-msgstr ""
+msgstr "Статусы"
 
 #: task_manager/templates/base.html:38
 msgid "Edit profile"
