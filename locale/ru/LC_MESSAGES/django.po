@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-15 00:53+0300\n"
+"POT-Creation-Date: 2025-06-15 23:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,23 +20,23 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/task_manager_app/views.py:17
+#: task_manager/task_manager_app/users/views.py:17
 msgid "User created successfully"
 msgstr "Пользователь создан успешно"
 
-#: task_manager/task_manager_app/views.py:37
+#: task_manager/task_manager_app/users/views.py:37
 msgid "You don't have permission to update this user."
 msgstr "У вас нет разрешения на обновление этого пользователя."
 
-#: task_manager/task_manager_app/views.py:41
+#: task_manager/task_manager_app/users/views.py:41
 msgid "User updated successfully"
 msgstr "Пользователь успешно обновлен"
 
-#: task_manager/task_manager_app/views.py:53
+#: task_manager/task_manager_app/users/views.py:53
 msgid "You don't have permission to delete this user."
 msgstr "У вас нет разрешения на удаление этого пользователя."
 
-#: task_manager/task_manager_app/views.py:58
+#: task_manager/task_manager_app/users/views.py:58
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
 
