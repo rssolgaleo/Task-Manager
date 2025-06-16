@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{{ task.name }}</h1>
+
+  <p><strong>{% trans "Description" %}:</strong> {{ task.description }}</p>
+  <p><strong>{% trans "Status" %}:</strong> {{ task.status.name }}</p>
+  <p><strong>{% trans "Author" %}:</strong> {{ task.author.get_full_name }}</p>
+  <p><strong>{% trans "Performer" %}:</strong>
+    {% if task.executor %}
+      {{ task.executor.get_full_name }}
+    {% else %}
+      —
+    {% endif %}
+  </p>
+  <p><strong>{% trans "Created at" %}:</strong> {{ task.created_at|date:"d.m.Y" }}</p>
+
+  <a href="{% url 'task_update' task.pk %}" class="btn btn-outline-dark">{% trans "Edit" %}</a>
+  <a href="{% url 'task_delete' task.pk %}" class="btn btn-warning">{% trans "Delete" %}</a>
+{% endblock %}
