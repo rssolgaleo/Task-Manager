@@ -1,0 +1,52 @@
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import ProtectedError
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from task_manager.task_manager_app.labels.models import Label
+from task_manager.task_manager_app.labels.forms import LabelForm
+
+
+class LabelListView(LoginRequiredMixin, ListView):
+    model = Label
+    template_name = 'labels/label_list.html'
+    context_object_name = 'labels'
+
+
+class LabelCreateView(LoginRequiredMixin, CreateView):
+    model = Label
+    form_class = LabelForm
+    template_name = 'labels/label_form.html'
+    success_url = reverse_lazy('label_list')
+
+    def form_valid(self, form):
+        messages.success(self.request, _('Label created successfully'))
+        return super().form_valid(form)
+
+
+class LabelUpdateView(LoginRequiredMixin, UpdateView):
+    model = Label
+    form_class = LabelForm
+    template_name = 'labels/label_form.html'
+    success_url = reverse_lazy('label_list')
+
+    def form_valid(self, form):
+        messages.success(self.request, _('Label updated successfully'))
+        return super().form_valid(form)
+
+
+class LabelDeleteView(LoginRequiredMixin, DeleteView):
+    model = Label
+    template_name = 'labels/label_confirm_delete.html'
+    success_url = reverse_lazy('label_list')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        try:
+            messages.success(request, _('Label deleted successfully'))
+            return super().delete(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(request, _('Cannot delete label because it is in use'))
+            return redirect('label_list')
