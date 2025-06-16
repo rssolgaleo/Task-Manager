@@ -7,6 +7,7 @@ from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from .models import Status
 from .forms import StatusForm
+from django.db.models.deletion import ProtectedError
 
 class StatusListView(LoginRequiredMixin, ListView):
     model = Status
@@ -41,14 +42,13 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'statuses/status_confirm_delete.html'
     success_url = reverse_lazy('status_list')
 
-    def form_valid(self, form):
-        messages.success(self.request, _("Status deleted successfully"))
-        return super().form_valid(form)
-
-    def delete(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         try:
-            return super().delete(request, *args, **kwargs)
+            self.object.delete()
+            messages.success(request, _("Status deleted successfully"))
+            return redirect(self.success_url)
         except ProtectedError:
             messages.error(request, _("Cannot delete status because it is in use"))
-            return redirect('status_list')
+            return redirect("status_list")
+

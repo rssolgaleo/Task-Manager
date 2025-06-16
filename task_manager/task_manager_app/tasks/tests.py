@@ -2,11 +2,13 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from task_manager.task_manager_app.tasks.models import Task
+from task_manager.task_manager_app.statuses.models import Status
 
 
 class TaskCreateTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='creator', password='pass123')
+        self.status = Status.objects.create(name='Open')
         self.client.login(username='creator', password='pass123')
 
     def test_create_task(self):
@@ -14,7 +16,7 @@ class TaskCreateTest(TestCase):
         data = {
             'name': 'New Task',
             'description': 'Task description',
-            'status': '',
+            'status': self.status.id,
             'executor': ''
         }
         response = self.client.post(url, data)
@@ -25,10 +27,12 @@ class TaskCreateTest(TestCase):
 class TaskReadTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='reader', password='pass123')
+        self.status = Status.objects.create(name='In progress')
         self.task = Task.objects.create(
             name='Read Task',
             description='Some desc',
-            author=self.user
+            author=self.user,
+            status=self.status
         )
         self.client.login(username='reader', password='pass123')
 
@@ -47,10 +51,12 @@ class TaskReadTest(TestCase):
 class TaskUpdateTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='editor', password='pass123')
+        self.status = Status.objects.create(name='To edit')
         self.task = Task.objects.create(
             name='Old Task',
             description='Old desc',
-            author=self.user
+            author=self.user,
+            status=self.status
         )
         self.client.login(username='editor', password='pass123')
 
@@ -59,7 +65,7 @@ class TaskUpdateTest(TestCase):
         data = {
             'name': 'Updated Task',
             'description': 'New description',
-            'status': '',
+            'status': self.status.id,
             'executor': ''
         }
         response = self.client.post(url, data)
@@ -72,7 +78,13 @@ class TaskDeleteTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='deleter', password='pass123')
         self.other_user = User.objects.create_user(username='other', password='pass456')
-        self.own_task = Task.objects.create(name='My Task', description='desc', author=self.user)
+        self.status = Status.objects.create(name='Delete Test')
+        self.own_task = Task.objects.create(
+            name='My Task',
+            description='desc',
+            author=self.user,
+            status=self.status
+        )
         self.client.login(username='deleter', password='pass123')
 
     def test_task_delete_own(self):
@@ -82,7 +94,12 @@ class TaskDeleteTest(TestCase):
         self.assertFalse(Task.objects.filter(pk=self.own_task.pk).exists())
 
     def test_task_delete_not_owner(self):
-        foreign_task = Task.objects.create(name='Not mine', description='desc', author=self.other_user)
+        foreign_task = Task.objects.create(
+            name='Not mine',
+            description='desc',
+            author=self.other_user,
+            status=self.status
+        )
         url = reverse('task_delete', args=[foreign_task.pk])
         response = self.client.post(url)
         self.assertRedirects(response, reverse('task_list'))

@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from .forms import CustomUserCreationForm
-
+from django.db.models.deletion import ProtectedError
 
 class UserCreateView(CreateView):
     form_class = CustomUserCreationForm
@@ -54,6 +54,15 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
             return redirect("user_list")
         return super().dispatch(request, *args, **kwargs)
 
-    def delete(self, request, *args, **kwargs):
-        messages.success(request, _("User successfully deleted"))
-        return super().delete(request, *args, **kwargs)
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        try:
+            self.object.delete()
+            messages.success(request, _("Account successfully deleted"))
+            return redirect(self.success_url)
+        except ProtectedError:
+            messages.error(
+                request,
+                _("Cannot delete account because they are assigned to at least one task.")
+            )
+            return redirect("user_list")
