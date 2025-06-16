@@ -42,11 +42,11 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'labels/label_confirm_delete.html'
     success_url = reverse_lazy('label_list')
 
-    def delete(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        try:
-            messages.success(request, _('Label deleted successfully'))
-            return super().delete(request, *args, **kwargs)
-        except ProtectedError:
+        if self.object.tasks.exists():
             messages.error(request, _('Cannot delete label because it is in use'))
-            return redirect('label_list')
+            return redirect(self.success_url)
+
+        messages.success(request, _('Label deleted successfully'))
+        return super().post(request, *args, **kwargs)

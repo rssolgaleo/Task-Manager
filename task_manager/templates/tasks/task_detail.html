@@ -26,6 +26,20 @@
           </td>
         </tr>
         <tr>
+          <th scope="row">{% trans "Labels" %}</th>
+          <td>
+            {% if task.labels.all %}
+              {% for label in task.labels.all %}
+                <span class="badge text-bg-warning">{{ label.name }}</span>
+              {% empty %}
+                —
+              {% endfor %}
+            {% else %}
+              —
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
           <th scope="row">{% trans "Created at" %}</th>
           <td>{{ task.created_at|date:"d.m.Y" }}</td>
         </tr>
