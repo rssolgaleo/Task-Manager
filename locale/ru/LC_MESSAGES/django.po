@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 20:49+0300\n"
+"POT-Creation-Date: 2025-06-16 21:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,21 +104,26 @@ msgstr "Пользователи"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: task_manager/templates/base.html:38
+#: task_manager/templates/base.html:35
+#: task_manager/templates/tasks/task_list.html:5
+msgid "Tasks"
+msgstr "Задачи"
+
+#: task_manager/templates/base.html:43
 msgid "Edit profile"
 msgstr "Редактировать профиль"
 
-#: task_manager/templates/base.html:42
+#: task_manager/templates/base.html:47
 msgid "Logout"
 msgstr "Выход из системы"
 
-#: task_manager/templates/base.html:46
+#: task_manager/templates/base.html:51
 #: task_manager/templates/users/login.html:6
 #: task_manager/templates/users/login.html:11
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:47
+#: task_manager/templates/base.html:52
 msgid "Sign up"
 msgstr "Регистрация"
 
@@ -223,10 +228,6 @@ msgstr "Редактировать статус"
 #| msgid "Create status"
 msgid "Create task"
 msgstr "Создать статус"
-
-#: task_manager/templates/tasks/task_list.html:5
-msgid "Tasks"
-msgstr "Задачи"
 
 #: task_manager/templates/users/user_confirm_delete.html:8
 msgid "Are you sure you want to delete account?"
