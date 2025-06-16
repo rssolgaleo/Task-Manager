@@ -3,16 +3,12 @@
 
 {% block content %}
   <div class="card shadow-sm p-4">
-    <h1 class="mb-4">{{ task.name }}</h1>
-
+    <h1 class="mb-2">{{ task.name }}</h1>
+    <p class="mb-4">{{ task.description|linebreaksbr }}</p>
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <th scope="row" class="w-25">{% trans "Description" %}</th>
-          <td>{{ task.description }}</td>
-        </tr>
-        <tr>
-          <th scope="row">{% trans "Status" %}</th>
+          <th scope="row" class="w-25">{% trans "Status" %}</th>
           <td>{{ task.status.name }}</td>
         </tr>
         <tr>
