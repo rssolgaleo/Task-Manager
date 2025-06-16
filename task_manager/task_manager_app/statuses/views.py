@@ -5,7 +5,6 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import ProtectedError
 from django.shortcuts import redirect
-
 from .models import Status
 from .forms import StatusForm
 
