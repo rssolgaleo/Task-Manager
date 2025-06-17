@@ -19,3 +19,7 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["task_manager"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "task_manager.settings"
+pythonpath = ["."]
