@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from .models import Task
-from .forms import TaskForm
+from task_manager.task_manager_app.tasks.forms import TaskForm
 from django_filters.views import FilterView
 from .filters import TaskFilter
 
