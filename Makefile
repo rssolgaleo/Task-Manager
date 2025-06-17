@@ -18,4 +18,4 @@ build:
 	./build.sh
 
 test:
-	uv run pytest -vv
+	cd python-project-52 && uv run pytest -vv
