@@ -3,9 +3,12 @@
 import os
 import sys
 
-
 def main():
     """Run administrative tasks."""
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    sys.path.insert(0, current_path)
+    sys.path.insert(0, os.path.join(current_path, "task_manager"))
+
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'task_manager.settings')
     try:
         from django.core.management import execute_from_command_line
