@@ -16,3 +16,6 @@ render-start:
 build:
 	chmod +x ./build.sh
 	./build.sh
+
+make test:
+	uv run python manage.py test
