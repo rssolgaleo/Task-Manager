@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="card shadow-sm p-4 text-center">
+    <h1 class="mb-3">{% trans "Welcome to the Task Manager!" %}</h1>
+    <p class="lead">{% trans "This is a simple project for managing tasks with statuses, labels and filters." %}</p>
+  </div>
+{% endblock %}
