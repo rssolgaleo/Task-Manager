@@ -51,7 +51,7 @@ class UserUpdateTest(TestCase):
             reverse('user_update', args=[self.other_user.id]),
             {
                 'first_name': 'Hacker', 
-                'username': 'someone',
+                'last_name': 'someone',
                 'username': 'someone',
                 'password1': 'newpass123',
                 'password2': 'newpass123',
