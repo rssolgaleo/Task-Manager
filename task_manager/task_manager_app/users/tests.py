@@ -33,7 +33,13 @@ class UserUpdateTest(TestCase):
         self.client.login(username='editor', password='pass123')
         response = self.client.post(
             reverse('user_update', args=[self.user.id]),
-            {'first_name': 'Updated', 'last_name': 'Name', 'username': 'editor'}
+            {
+                'first_name': 'Updated',
+                'last_name': 'Name',
+                'username': 'editor',
+                'password1': 'newpass123',
+                'password2': 'newpass123',
+            }
         )
         self.assertRedirects(response, reverse('user_list'))
         self.user.refresh_from_db()
@@ -43,7 +49,13 @@ class UserUpdateTest(TestCase):
         self.client.login(username='editor', password='pass123')
         response = self.client.post(
             reverse('user_update', args=[self.other_user.id]),
-            {'first_name': 'Hacker', 'username': 'someone'},
+            {
+                'first_name': 'Hacker', 
+                'username': 'someone',
+                'username': 'someone',
+                'password1': 'newpass123',
+                'password2': 'newpass123',
+            },
             follow=True
         )
         self.assertRedirects(response, reverse('user_list'))

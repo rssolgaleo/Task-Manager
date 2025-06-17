@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserUpdateForm
 from django.db.models.deletion import ProtectedError
 
 class UserCreateView(CreateView):
@@ -26,7 +26,7 @@ class UserListView(ListView):
 
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
-    form_class = CustomUserCreationForm
+    form_class = CustomUserUpdateForm
     template_name = 'users/user_form.html'
     success_url = reverse_lazy('user_list')
 
