@@ -6,13 +6,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from .models import Task
 from .forms import TaskForm
+from django_filters.views import FilterView
+from .filters import TaskFilter
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskListView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/task_list.html'
     context_object_name = 'tasks'
-
+    filterset_class = TaskFilter
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
