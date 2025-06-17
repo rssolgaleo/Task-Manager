@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from task_manager.task_manager_app.tasks.models import Task
 from task_manager.task_manager_app.statuses.models import Status
+from task_manager.task_manager_app.labels.models import Label
 
 
 class TaskCreateTest(TestCase):
@@ -104,3 +105,52 @@ class TaskDeleteTest(TestCase):
         response = self.client.post(url)
         self.assertRedirects(response, reverse('task_list'))
         self.assertTrue(Task.objects.filter(pk=foreign_task.pk).exists())
+
+
+class TaskFilterTests(TestCase):
+    def setUp(self):
+        self.user1 = User.objects.create_user(username='user1', password='pass')
+        self.user2 = User.objects.create_user(username='user2', password='pass')
+        self.status = Status.objects.create(name='Open')
+        self.label = Label.objects.create(name='Urgent')
+
+        self.task1 = Task.objects.create(
+            name='Task 1',
+            description='Description',
+            status=self.status,
+            author=self.user1,
+            executor=self.user2
+        )
+        self.task1.labels.add(self.label)
+
+        self.task2 = Task.objects.create(
+            name='Task 2',
+            description='Another',
+            status=self.status,
+            author=self.user2,
+            executor=self.user1
+        )
+
+    def test_filter_by_status(self):
+        self.client.login(username='user1', password='pass')
+        response = self.client.get(reverse('task_list'), {'status': self.status.pk})
+        self.assertContains(response, 'Task 1')
+        self.assertContains(response, 'Task 2')
+
+    def test_filter_by_executor(self):
+        self.client.login(username='user1', password='pass')
+        response = self.client.get(reverse('task_list'), {'executor': self.user2.pk})
+        self.assertContains(response, 'Task 1')
+        self.assertNotContains(response, 'Task 2')
+
+    def test_filter_by_label(self):
+        self.client.login(username='user1', password='pass')
+        response = self.client.get(reverse('task_list'), {'labels': self.label.pk})
+        self.assertContains(response, 'Task 1')
+        self.assertNotContains(response, 'Task 2')
+
+    def test_filter_by_self_tasks(self):
+        self.client.login(username='user1', password='pass')
+        response = self.client.get(reverse('task_list'), {'self_tasks': 'on'})
+        self.assertContains(response, 'Task 1')
+        self.assertNotContains(response, 'Task 2')
