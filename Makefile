@@ -17,5 +17,5 @@ build:
 	chmod +x ./build.sh
 	./build.sh
 
-make test:
+test:
 	uv run python manage.py test
