@@ -1,8 +1,6 @@
-from django.contrib import admin
 from django.urls import path
-from django.contrib.auth.views import LoginView, LogoutView
-from task_manager.task_manager_app.users import views
-from task_manager.task_manager_app.users.views import UserCreateView, UserListView, UserUpdateView, UserDeleteView
+from task_manager.users import views
+from task_manager.users.views import UserListView, UserUpdateView, UserDeleteView
 
 urlpatterns = [
     path('create/', views.UserCreateView.as_view(), name='user_create'),

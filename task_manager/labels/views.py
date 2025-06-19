@@ -1,12 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from task_manager.task_manager_app.labels.models import Label
-from task_manager.task_manager_app.labels.forms import LabelForm
+from task_manager.labels.models import Label
+from task_manager.labels.forms import LabelForm
 
 
 class LabelListView(LoginRequiredMixin, ListView):

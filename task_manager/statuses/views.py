@@ -5,8 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import ProtectedError
 from django.shortcuts import redirect
-from task_manager.task_manager_app.statuses.models import Status
-from task_manager.task_manager_app.statuses.forms import StatusForm
+from task_manager.statuses.models import Status
+from task_manager.statuses.forms import StatusForm
 from django.db.models.deletion import ProtectedError
 
 class StatusListView(LoginRequiredMixin, ListView):

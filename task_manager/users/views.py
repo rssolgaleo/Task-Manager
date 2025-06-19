@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
-from task_manager.task_manager_app.users.forms import CustomUserCreationForm, CustomUserUpdateForm
+from task_manager.users.forms import CustomUserCreationForm, CustomUserUpdateForm
 from django.db.models.deletion import ProtectedError
 
 class UserCreateView(CreateView):
