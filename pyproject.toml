@@ -25,4 +25,4 @@ task_manager = "task_manager"
 
 [pytest]
 DJANGO_SETTINGS_MODULE = 'task_manager.settings'
-pythonpath = 'task_manager'
+pythonpath = '.'
