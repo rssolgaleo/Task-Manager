@@ -22,3 +22,8 @@ packages = ["task_manager"]
 
 [tool.setuptools.package-dir]
 task_manager = "task_manager"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "task_manager.settings"
+pythonpath = ["."]
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
