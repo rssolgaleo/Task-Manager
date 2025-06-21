@@ -44,7 +44,9 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         if self.object.tasks.exists():
-            messages.error(request, _('Cannot delete label because it is in use'))
+            messages.error(
+                request, _('Cannot delete label because it is in use')
+            )
             return redirect(self.success_url)
 
         messages.success(request, _('Label deleted successfully'))

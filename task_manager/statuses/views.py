@@ -3,11 +3,11 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusForm
 from django.db.models.deletion import ProtectedError
+
 
 class StatusListView(LoginRequiredMixin, ListView):
     model = Status
@@ -49,6 +49,8 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
             messages.success(request, _("Status deleted successfully"))
             return redirect(self.success_url)
         except ProtectedError:
-            messages.error(request, _("Cannot delete status because it is in use"))
+            messages.error(
+                request,
+                _("Cannot delete status because it is in use")
+            )
             return redirect("status_list")
-

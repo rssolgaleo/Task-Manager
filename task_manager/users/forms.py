@@ -1,14 +1,19 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UsernameField
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
+
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["first_name", "last_name", "username", "password1", "password2"]
+
 
 class CustomUserUpdateForm(forms.ModelForm):
     password1 = forms.CharField(

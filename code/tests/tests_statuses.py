@@ -1,18 +1,11 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth.models import User
 from task_manager.statuses.models import Status
-from django.contrib.auth import get_user_model
-
-
-User = get_user_model()
-
 
 class StatusCreateTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
-            username='admin',
-            password='admin123'
-        )
+        self.user = User.objects.create_user(username='admin', password='admin123')
         self.client.login(username='admin', password='admin123')
 
     def test_create_status(self):
@@ -26,10 +19,7 @@ class StatusCreateTest(TestCase):
 
 class StatusReadTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
-            username='testuser',
-            password='testpass'
-        )
+        self.user = User.objects.create_user(username='testuser', password='testpass')
         self.status = Status.objects.create(name='Test Status')
         self.client.login(username='testuser', password='testpass')
 
@@ -41,10 +31,7 @@ class StatusReadTest(TestCase):
 
 class StatusUpdateTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
-            username='editor',
-            password='pass123'
-        )
+        self.user = User.objects.create_user(username='editor', password='pass123')
         self.status = Status.objects.create(name='Initial Status')
         self.client.login(username='editor', password='pass123')
 
@@ -58,10 +45,7 @@ class StatusUpdateTest(TestCase):
 
 class StatusDeleteTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
-            username='deleter',
-            password='pass123'
-        )
+        self.user = User.objects.create_user(username='deleter', password='pass123')
         self.status = Status.objects.create(name='To be deleted')
         self.client.login(username='deleter', password='pass123')
 

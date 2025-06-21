@@ -1,14 +1,20 @@
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User
 from task_manager.tasks.models import Task
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class TaskCreateTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='creator', password='pass123')
+        self.user = User.objects.create_user(
+            username='creator',
+            password='pass123'
+        )
         self.status = Status.objects.create(name='Open')
         self.client.login(username='creator', password='pass123')
 
@@ -133,19 +139,25 @@ class TaskFilterTests(TestCase):
 
     def test_filter_by_status(self):
         self.client.login(username='user1', password='pass')
-        response = self.client.get(reverse('task_list'), {'status': self.status.pk})
+        response = self.client.get(
+            reverse('task_list'), {'status': self.status.pk}
+        )
         self.assertContains(response, 'Task 1')
         self.assertContains(response, 'Task 2')
 
     def test_filter_by_executor(self):
         self.client.login(username='user1', password='pass')
-        response = self.client.get(reverse('task_list'), {'executor': self.user2.pk})
+        response = self.client.get(
+            reverse('task_list'), {'executor': self.user2.pk}
+        )
         self.assertContains(response, 'Task 1')
         self.assertNotContains(response, 'Task 2')
 
     def test_filter_by_label(self):
         self.client.login(username='user1', password='pass')
-        response = self.client.get(reverse('task_list'), {'labels': self.label.pk})
+        response = self.client.get(
+            reverse('task_list'), {'labels': self.label.pk}
+        )
         self.assertContains(response, 'Task 1')
         self.assertNotContains(response, 'Task 2')
 
