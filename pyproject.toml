@@ -25,6 +25,5 @@ packages = ["task_manager"]
 task_manager = "task_manager"
 
 [tool.pytest.ini_options]
-[pytest]
 DJANGO_SETTINGS_MODULE = "task_manager.settings"
 python_files = ["test_*.py", "*_test.py"]
