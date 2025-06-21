@@ -18,4 +18,4 @@ build:
 	./build.sh
 
 test:
-	uv run python manage.py test
+	pytest
