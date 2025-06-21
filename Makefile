@@ -5,7 +5,7 @@ migrate:
 	uv run python manage.py migrate
 
 collectstatic:
-	uv run python manage.py collectstatic --noinput
+	uv run python manage.py collectstatic --no-input
 
 run:
 	uv run python manage.py runserver
