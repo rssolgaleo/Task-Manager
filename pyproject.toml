@@ -27,3 +27,4 @@ task_manager = "task_manager"
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "task_manager.settings"
 python_files = ["test_*.py", "*_test.py"]
+addopts = "--pythonpath=code"
