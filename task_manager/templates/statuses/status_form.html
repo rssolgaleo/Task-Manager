@@ -15,7 +15,11 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit" class="btn btn-warning">
-      {% trans "Save" %}
+      {% if form.instance.pk %}
+        {% trans "Edit" %}
+      {% else %}
+        {% trans "Save" %}
+      {% endif %}
     </button>
   </form>
 {% endblock %}

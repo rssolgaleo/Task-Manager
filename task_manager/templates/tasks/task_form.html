@@ -5,9 +5,9 @@
 {% block content %}
   <h1>
     {% if form.instance.pk %}
-      {% trans "Edit task" %}
+      {% trans "Edit status" %}
     {% else %}
-      {% trans "Create task" %}
+      {% trans "Create status" %}
     {% endif %}
   </h1>
 
@@ -15,7 +15,11 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit" class="btn btn-warning">
-      {% trans "Save" %}
+      {% if form.instance.pk %}
+        {% trans "Edit" %}
+      {% else %}
+        {% trans "Save" %}
+      {% endif %}
     </button>
   </form>
 {% endblock %}
