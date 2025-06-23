@@ -46,7 +46,7 @@ msgstr "Метка успешно удалена"
 
 #: task_manager/statuses/views.py:25
 msgid "Status created successfully"
-msgstr "Статус создан успешно"
+msgstr "Статус успешно создан"
 
 #: task_manager/statuses/views.py:36
 msgid "Status updated successfully"
