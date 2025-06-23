@@ -9,7 +9,7 @@
         <p class="text-secondary mb-4">{% trans "If you delete the account, it cannot be restored." %}</p>
         <form method="post">
           {% csrf_token %}
-          <button type="submit" class="btn btn-warning">{% trans "Delete" %}</button>
+          <button type="submit" class="btn btn-warning">{% trans "Yes, delete" %}</button>
           <a href="{% url 'user_list' %}" class="btn btn-outline-dark ms-2">{% trans "Cancel" %}</a>
         </form>
       </div>

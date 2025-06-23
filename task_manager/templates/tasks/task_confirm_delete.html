@@ -13,7 +13,7 @@
         </div>
         <form method="post">
           {% csrf_token %}
-          <button type="submit" class="btn btn-warning me-2">{% trans "Delete" %}</button>
+          <button type="submit" class="btn btn-warning me-2">{% trans "Yes, delete" %}</button>
           <a href="{% url 'task_list' %}" class="btn btn-outline-dark">{% trans "Cancel" %}</a>
         </form>
       </div>
