@@ -12,13 +12,19 @@
     <div class="card-body">
       <form method="get">
         {% for field in filter.form %}
-          <div class="mb-3">
-            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-            {{ field }}
-            {% if field.errors %}
-              <div class="text-danger">{{ field.errors }}</div>
-            {% endif %}
-          </div>
+          {% if field.name == 'self_tasks' %}
+            <div class="form-check mb-3">
+              {{ field }}
+              <label class="form-check-label" for="{{ field.id_for_label }}">
+                {{ field.label }}
+              </label>
+            </div>
+          {% else %}
+            <div class="mb-3">
+              <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+              {{ field }}
+            </div>
+          {% endif %}
         {% endfor %}
         <button type="submit" class="btn btn-warning">{% trans "Filter" %}</button>
       </form>
