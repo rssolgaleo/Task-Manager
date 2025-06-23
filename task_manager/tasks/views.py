@@ -51,8 +51,8 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('task_list')
 
     def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        if self.object.author != request.user:
+        obj = self.get_object()
+        if obj.author != request.user:
             messages.error(request, _('You cannot delete a task you did not create'))
             return redirect(self.success_url)
         messages.success(request, _('Task deleted successfully'))
