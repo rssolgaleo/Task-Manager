@@ -3,11 +3,11 @@ from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskForm
 from django_filters.views import FilterView
 from task_manager.tasks.filters import TaskFilter
+from django.shortcuts import redirect
 
 
 class TaskListView(LoginRequiredMixin, FilterView):
@@ -50,13 +50,10 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'tasks/task_confirm_delete.html'
     success_url = reverse_lazy('task_list')
 
-    def dispatch(self, request, *args, **kwargs):
-        task = self.get_object()
-        if task.author != request.user:
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.author != request.user:
             messages.error(request, _('You cannot delete a task you did not create'))
-            return HttpResponseRedirect(reverse_lazy('task_list'))
-        return super().dispatch(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, _('Task deleted successfully'))
-        return super().delete(request, *args, **kwargs)
+            return redirect(self.success_url)
+        messages.success(request, _('Task deleted successfully'))
+        return super().post(request, *args, **kwargs)
