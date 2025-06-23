@@ -18,8 +18,28 @@ from task_manager.users.forms import (
   CustomUserCreationForm,
   CustomUserUpdateForm,
 )
+from django.contrib.auth.views import (
+  LoginView,
+  LogoutView,
+)
 
 User = get_user_model()
+
+
+class CustomLoginView(LoginView):
+    template_name = "users/login.html"
+
+    def form_valid(self, form):
+        messages.success(self.request, _("You are logged in"))
+        return super().form_valid(form)
+
+
+class CustomLogoutView(LogoutView):
+    next_page = '/'
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, _("You are logged out"))
+        return super().dispatch(request, *args, **kwargs)
 
 
 class UserCreateView(CreateView):
@@ -86,3 +106,4 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
                 _("Cannot delete account because they are assigned to at least one task.")
             )
             return redirect("user_list")
+
