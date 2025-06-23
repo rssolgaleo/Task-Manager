@@ -257,7 +257,7 @@ msgstr "Если вы удалите учетную запись, ее нель�
 #: task_manager/templates/users/user_create.html:6
 #: task_manager/templates/users/user_create.html:11
 msgid "Register"
-msgstr "Зарегистрироваться"
+msgstr "Зарегистрировать"
 
 #: task_manager/templates/users/user_form.html:9
 #: task_manager/templates/users/user_form.html:15
