@@ -103,7 +103,9 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
         except ProtectedError:
             messages.error(
                 request,
-                _("Cannot delete account because they are assigned to at least one task.")
+                _(
+                    "Cannot delete the account because they are assigned "
+                    "to at least one task."
+                )
             )
             return redirect("user_list")
-

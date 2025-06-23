@@ -33,7 +33,10 @@ class TaskCreateTest(TestCase):
 
 class TaskReadTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='reader', password='pass123')
+        self.user = User.objects.create_user(
+            username='reader',
+            password='pass123'
+        )
         self.status = Status.objects.create(name='In progress')
         self.task = Task.objects.create(
             name='Read Task',
@@ -57,7 +60,10 @@ class TaskReadTest(TestCase):
 
 class TaskUpdateTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='editor', password='pass123')
+        self.user = User.objects.create_user(
+            username='editor',
+            password='pass123'
+        )
         self.status = Status.objects.create(name='To edit')
         self.task = Task.objects.create(
             name='Old Task',
@@ -83,9 +89,17 @@ class TaskUpdateTest(TestCase):
 
 class TaskDeleteTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='deleter', password='pass123')
-        self.other_user = User.objects.create_user(username='other', password='pass456')
-        self.status = Status.objects.create(name='Delete Test')
+        self.user = User.objects.create_user(
+            username='deleter',
+            password='pass123'
+        )
+        self.other_user = User.objects.create_user(
+            username='other',
+            password='pass456'
+        )
+        self.status = Status.objects.create(
+            name='Delete Test'
+        )
         self.own_task = Task.objects.create(
             name='My Task',
             description='desc',
@@ -115,8 +129,14 @@ class TaskDeleteTest(TestCase):
 
 class TaskFilterTests(TestCase):
     def setUp(self):
-        self.user1 = User.objects.create_user(username='user1', password='pass')
-        self.user2 = User.objects.create_user(username='user2', password='pass')
+        self.user1 = User.objects.create_user(
+            username='user1',
+            password='pass'
+        )
+        self.user2 = User.objects.create_user(
+            username='user2',
+            password='pass'
+        )
         self.status = Status.objects.create(name='Open')
         self.label = Label.objects.create(name='Urgent')
 

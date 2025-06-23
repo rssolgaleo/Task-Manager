@@ -16,6 +16,7 @@ class TaskListView(LoginRequiredMixin, FilterView):
     context_object_name = 'tasks'
     filterset_class = TaskFilter
 
+
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'tasks/task_detail.html'
@@ -50,15 +51,13 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'tasks/task_confirm_delete.html'
     success_url = reverse_lazy('task_list')
 
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
-    model = Task
-    template_name = 'tasks/task_confirm_delete.html'
-    success_url = reverse_lazy('task_list')
-
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
         if obj.author != request.user:
-            messages.error(request, _('You cannot delete a task you did not create'))
+            messages.error(
+                request,
+                _('You cannot delete a task you did not create')
+            )
             return redirect(self.success_url)
         return super().dispatch(request, *args, **kwargs)
 

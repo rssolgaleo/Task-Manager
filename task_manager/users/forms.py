@@ -12,7 +12,13 @@ User = get_user_model()
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["first_name", "last_name", "username", "password1", "password2"]
+        fields = [
+            "first_name",
+            "last_name",
+            "username",
+            "password1",
+            "password2",
+        ]
 
 
 class CustomUserUpdateForm(forms.ModelForm):
@@ -34,9 +40,15 @@ class CustomUserUpdateForm(forms.ModelForm):
 
     def clean_username(self):
         username = self.cleaned_data["username"]
-        user_qs = User.objects.filter(username=username).exclude(pk=self.instance.pk)
+        user_qs = (
+            User.objects
+            .filter(username=username)
+            .exclude(pk=self.instance.pk)
+        )
         if user_qs.exists():
-            raise forms.ValidationError(_("A user with that username already exists."))
+            raise forms.ValidationError(
+                _("A user with that username already exists.")
+            )
         return username
 
     def clean(self):

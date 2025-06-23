@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 19:27+0000\n"
+"POT-Creation-Date: 2025-06-23 20:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,19 +94,19 @@ msgstr "Автор"
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/tasks/views.py:33
+#: task_manager/tasks/views.py:34
 msgid "Task created successfully"
 msgstr "Задача успешно создана"
 
-#: task_manager/tasks/views.py:44
+#: task_manager/tasks/views.py:45
 msgid "Task updated successfully"
 msgstr "Задача успешно изменена"
 
-#: task_manager/tasks/views.py:56
+#: task_manager/tasks/views.py:59
 msgid "You cannot delete a task you did not create"
 msgstr "Задачу может удалить только ее автор"
 
-#: task_manager/tasks/views.py:58
+#: task_manager/tasks/views.py:65
 msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
@@ -167,13 +167,6 @@ msgstr "Вы уверены, что хотите удалить эту метк�
 #: task_manager/templates/users/user_confirm_delete.html:12
 msgid "Yes, delete"
 msgstr "Да, удалить"
-
-#: task_manager/templates/labels/label_confirm_delete.html:17
-#: task_manager/templates/statuses/status_confirm_delete.html:17
-#: task_manager/templates/tasks/task_confirm_delete.html:17
-#: task_manager/templates/users/user_confirm_delete.html:13
-msgid "Cancel"
-msgstr "Отменить"
 
 #: task_manager/templates/labels/label_form.html:8
 msgid "Edit label"
@@ -275,6 +268,10 @@ msgstr "Вы уверены, что хотите удалить аккаунт?"
 msgid "If you delete the account, it cannot be restored."
 msgstr "Если вы удалите учетную запись, ее нельзя будет восстановить."
 
+#: task_manager/templates/users/user_confirm_delete.html:13
+msgid "Cancel"
+msgstr "Отменить"
+
 #: task_manager/templates/users/user_create.html:6
 msgid "Registration"
 msgstr "Регистрация"
@@ -300,19 +297,19 @@ msgstr "Имя пользователя"
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/users/forms.py:20
+#: task_manager/users/forms.py:26
 msgid "New password"
 msgstr "Пароль"
 
-#: task_manager/users/forms.py:25
+#: task_manager/users/forms.py:31
 msgid "Confirm new password"
 msgstr "Подтверждение пароля"
 
-#: task_manager/users/forms.py:39
+#: task_manager/users/forms.py:50
 msgid "A user with that username already exists."
 msgstr "Пользователь с таким именем уже существует."
 
-#: task_manager/users/forms.py:47
+#: task_manager/users/forms.py:59
 msgid "Passwords do not match"
 msgstr "Введенные пароли не совпадают."
 
@@ -352,8 +349,9 @@ msgstr "У вас нет прав для изменения другого по�
 msgid "Account successfully deleted"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:106
-msgid "Cannot delete account because they are assigned to at least one task."
+#: task_manager/users/views.py:107
+msgid ""
+"Cannot delete the account because they are assigned to at least one task."
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
 #~ msgid "Filter"
