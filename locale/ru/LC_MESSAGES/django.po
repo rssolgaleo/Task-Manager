@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 19:06+0000\n"
+"POT-Creation-Date: 2025-06-23 19:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,8 +259,8 @@ msgid "Create task"
 msgstr "Создать задачу"
 
 #: task_manager/templates/tasks/task_list.html:29
-msgid "Filter"
-msgstr "Фильтр"
+msgid "Show"
+msgstr "Показать"
 
 #: task_manager/templates/users/login.html:6
 #: task_manager/templates/users/login.html:11
@@ -355,3 +355,6 @@ msgstr "Пользователь успешно удален"
 #: task_manager/users/views.py:106
 msgid "Cannot delete account because they are assigned to at least one task."
 msgstr "Невозможно удалить пользователя, потому что он используется"
+
+#~ msgid "Filter"
+#~ msgstr "Фильтр"
