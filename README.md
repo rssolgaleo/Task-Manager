@@ -3,7 +3,7 @@
 
 [![SonarQube](https://sonarcloud.io/api/project_badges/measure?project=rssolgaleo_python-project-83&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rssolgaleo_python-project-52)
 
-[![Демонстрация](https://img.shields.io/badge/Веб--приложение-🔗-blue)](https://python-project-52-tt0j.onrender.com/)
+[![Демонстрация](https://img.shields.io/badge/Веб--приложение-🔗-blue)](https://task-manager-0faq.onrender.com)
 
 
 # Менеджер задач
